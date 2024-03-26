@@ -11,7 +11,7 @@ function HomeScreen() {
     useEffect(() => {
 
         async function fetchProducts() {
-            const { data } = await axios.get('https://8000-augustslett-buysmartfro-iuj11bcrysa.ws-eu110.gitpod.io/api/products/')
+            const { data } = await axios.get('/api/products/')
             setProducts(data)
         }
 
