@@ -1,28 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap'
-import Rating from '../components/Rating'
-import axios from 'axios'
-
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap';
+import Rating from '../components/Rating';
+import axios from 'axios';
 
 function ProductScreen({ match }) {
-
-    const [product, setProduct] = useState([]);
+    const [product, setProduct] = useState(null);
 
     useEffect(() => {
         async function fetchProduct() {
-            const { data } = await axios.post(`https://beehive-social-3ec964865be0.herokuapp.com/api/products/${match.params.id}`);
-            setProduct(data);
+            try {
+                const { data } = await axios.get(`https://8000-augustslett-beehiveback-p02o8jf3j0i.ws-eu110.gitpod.io/api/products/${match.params.id}`);
+                setProduct(data);
+            } catch (error) {
+                console.error('Error fetching product:', error);
+            }
         }
 
         fetchProduct();
-    }, [match.params.id]); // Include match.params.id in the dependency array
+    }, [match.params.id]);
 
-
+    if (!product) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div>
-            <Link to="/" className="btn btn-light-my-3">Go Back</Link>
+            <Link to="/" className="btn btn-light-my-3">
+                Go Back
+            </Link>
             <Row>
                 <Col md={6}>
                     <Image src={product.image} alt={product.name} fluid />
@@ -42,7 +48,6 @@ function ProductScreen({ match }) {
                         <ListGroup.Item>
                             Description: {product.description}
                         </ListGroup.Item>
-
                     </ListGroup>
                 </Col>
                 <Col md={3}>
@@ -56,7 +61,6 @@ function ProductScreen({ match }) {
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
-
                             <ListGroup.Item>
                                 <Row>
                                     <Col>Status:</Col>
@@ -65,7 +69,6 @@ function ProductScreen({ match }) {
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
-
                             <ListGroup.Item>
                                 <div className='d-grid gap-2'>
                                     <Button type='button' disabled={product.countInStock === 0}>Add to Cart</Button>
@@ -76,7 +79,7 @@ function ProductScreen({ match }) {
                 </Col>
             </Row>
         </div>
-    )
+    );
 }
 
-export default ProductScreen
+export default ProductScreen;
