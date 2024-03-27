@@ -11,7 +11,7 @@ function HomeScreen() {
     useEffect(() => {
 
         async function fetchProducts() {
-            const { data } = await axios.post('https://beehive-social-3ec964865be0.herokuapp.com/api/products')
+            const { data } = await axios.post('https://beehive-social-3ec964865be0.herokuapp.com/api/products/')
             setProducts(data)
         }
 
