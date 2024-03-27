@@ -1,24 +1,23 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Button, Card, ListGroupItem } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import axios from 'axios'
 
 
 function ProductScreen({ match }) {
 
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState([]);
 
-    useEffect(() => {
+useEffect(() => {
+    async function fetchProduct() {
+        const { data } = await axios.post(`https://beehive-social-3ec964865be0.herokuapp.com/api/products/${match.params.id}`);
+        setProduct(data);
+    }
 
-        async function fetchProduct() {
-            const { data } = await axios.post(`https://beehive-social-3ec964865be0.herokuapp.com/api/products/${match.params.id}`)
-            setProduct(data)
-        }
+    fetchProduct();
+}, [match.params.id]); // Include match.params.id in the dependency array
 
-        fetchProduct()
-
-    }, [])
 
 
     return (
@@ -69,7 +68,7 @@ function ProductScreen({ match }) {
 
                             <ListGroup.Item>
                                 <div className='d-grid gap-2'>
-                                    <Button type='button' disabled={product.countInStock == 0}>Add to Cart</Button>
+                                    <Button type='button' disabled={product.countInStock === 0}>Add to Cart</Button>
                                 </div>
                             </ListGroup.Item>
                         </ListGroup>
