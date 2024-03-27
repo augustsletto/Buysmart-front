@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
-
+import "./api/axiosDefaults"
 
 function App() {
   return (
