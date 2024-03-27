@@ -1,28 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Button, Card } from 'react-bootstrap';
 import Rating from '../components/Rating';
-import axios from 'axios';
+import { listProductDetails } from '../actions/productActions'
 
 function ProductScreen({ match }) {
-    const [product, setProduct] = useState(null);
+    const dispatch = useDispatch()
+    const productDetails = useSelector(state => state.productDetails)
+    const {loading, error, product} = productDetails
 
     useEffect(() => {
-        async function fetchProduct() {
-            try {
-                const { data } = await axios.get(`https://8000-augustslett-beehiveback-p02o8jf3j0i.ws-eu110.gitpod.io/api/products/${match.params.id}`);
-                setProduct(data);
-            } catch (error) {
-                console.error('Error fetching product:', error);
-            }
-        }
+        dispatch(listProductDetails(match.params.id))
+    }, []);
 
-        fetchProduct();
-    }, [match.params.id]);
 
-    if (!product) {
-        return <div>Loading...</div>;
-    }
+ 
+
 
     return (
         <div>
