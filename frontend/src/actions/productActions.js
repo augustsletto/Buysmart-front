@@ -14,7 +14,7 @@ export const listProducts = () => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST })
 
-        const { data } = await axios.get('https://8000-augustslett-beehiveback-p02o8jf3j0i.ws-eu110.gitpod.io/api/products')
+        const { data } = await axios.get('https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/products/')
 
         dispatch({
             type: PRODUCT_LIST_SUCCESS,
@@ -36,7 +36,7 @@ export const listProductDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST })
 
-        const { data } = await axios.get(`https://8000-augustslett-beehiveback-p02o8jf3j0i.ws-eu110.gitpod.io/api/products/${id}`)
+        const { data } = await axios.get(`https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/products/${id}`)
 
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
