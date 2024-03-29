@@ -82,29 +82,25 @@ function PlaceOrderScreen({ history }) {
                             {cart.cartItems.length === 0 ? <Message variant='info'>
                                 Your cart is empty
                             </Message> : (
-                                <ListGroup variant='flush'>
-                                    {cart.cartItems.map((item, index) => (
-                                        <ListGroup.Item key={index}>
-                                            <Row>
-                                                <Col md={1}>
-                                                    <Image src={item.image} alt={item.name} fluid rounded />
-                                                </Col>
+                                 <ListGroup variant='flush'>
+                                        {cart.cartItems.map((item, index) => (
+                                            <ListGroup.Item key={index}>
+                                                <Row>
+                                                    <Col md={1}>
+                                                        <Image src={item.image} alt={item.name} fluid rounded />
+                                                    </Col>
 
-                                                <Col>
-                                                    <Link to={`/product/${item.product}`}>{item.name}</Link>
-                                                </Col>
+                                                    <Col>
+                                                        <Link to={`/product/${item.product}`}>{item.name}</Link>
+                                                    </Col>
 
-
-                                                <Col md={4}>
-                                                    {item.qty} X ${item.price} = ${(item.qty * item.price).toFixed(2)}
-                                                </Col>
-
-                                            </Row>
-
-                                        </ListGroup.Item>
-                                    ))}
-
-                                </ListGroup>
+                                                    <Col md={4}>
+                                                        {item.qty} X ${item.price} = ${(item.qty * item.price).toFixed(2)}
+                                                    </Col>
+                                                </Row>
+                                            </ListGroup.Item>
+                                        ))}
+                                    </ListGroup>
                             )}
 
 
