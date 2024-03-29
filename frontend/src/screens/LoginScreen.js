@@ -10,7 +10,7 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min'
 import { login } from '../actions/userActions'
 
 
-function LoginScreen({location, history}) {
+function LoginScreen({ location, history }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -52,7 +52,7 @@ function LoginScreen({location, history}) {
         </Form.Group>
 
         <Form.Group controlId='password'>
-          <Form.Label>Password Address</Form.Label>
+          <Form.Label>Password</Form.Label>
           <Form.Control
             type='password'
             placeholder='Enter Password'
