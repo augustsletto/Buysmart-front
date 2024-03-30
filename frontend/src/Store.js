@@ -1,14 +1,44 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { thunk } from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { productListReducers, productDetailsReducers } from './reducers/productReducers'
+import {
+    productListReducers,
+    productDetailsReducers,
+    productDeleteReducers,
+    productCreateReducers,
+    productUpdateReducers,
+    productReviewCreateReducer,
+    productTopRatedReducer,
+} from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducers'
-import { userLoginReducers, userRegisterReducers, userDetailsReducers, userUpdateProfileReducers, userListReducer, userDeleteReducer } from './reducers/userReducers'
-import { orderCreateReducer, orderDetailsReducer, orderPayReducer, orderListMyReducer, } from './reducers/orderReducers'
+import {
+    userLoginReducers,
+    userRegisterReducers,
+    userDetailsReducers,
+    userUpdateProfileReducers,
+    userListReducer,
+    userDeleteReducer,
+    userUpdateReducer,
+} from './reducers/userReducers'
+import {
+    orderCreateReducer,
+    orderDetailsReducer,
+    orderPayReducer,
+    orderListMyReducer,
+    orderListReducer,
+    orderDeliverReducer,
+
+} from './reducers/orderReducers'
 
 const reducer = combineReducers({
     productList: productListReducers,
     productDetails: productDetailsReducers,
+    productDelete: productDeleteReducers,
+    productCreate: productCreateReducers,
+    productUpdate: productUpdateReducers,
+    productReviewCreate: productReviewCreateReducer,
+    productTopRated: productTopRatedReducer,
+
     cart: cartReducer,
     userLogin: userLoginReducers,
     userRegister: userRegisterReducers,
@@ -16,12 +46,15 @@ const reducer = combineReducers({
     userUpdateProfile: userUpdateProfileReducers,
     userList: userListReducer,
     userDelete: userDeleteReducer,
+    userUpdate: userUpdateReducer,
 
 
     orderCreate: orderCreateReducer,
     orderDetails: orderDetailsReducer,
     orderPay: orderPayReducer,
     orderListMy: orderListMyReducer,
+    orderList: orderListReducer,
+    orderDeliver: orderDeliverReducer,
 
 
 })
