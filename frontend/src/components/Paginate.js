@@ -6,7 +6,12 @@ function Paginate({ pages, page, keyword = '', isAdmin = false }) {
     if (keyword) {
         keyword = keyword.split('?keyword=')[1].split('&')[0];
     }
-   
+
+    const handlePaginationClick = (pageNumber) => {
+        window.location.href = !isAdmin ?
+            `/?keyword=${keyword}&page=${pageNumber}`
+            : `/admin/productlist/?keyword=${keyword}&page=${pageNumber}`;
+    };
 
     return (
         pages > 1 && (
@@ -15,15 +20,13 @@ function Paginate({ pages, page, keyword = '', isAdmin = false }) {
                     <Pagination.Item
                         key={x + 1}
                         active={x + 1 === page}
+                        onClick={() => handlePaginationClick(x + 1)}
+                        style={{
+                            backgroundColor: x + 1 === page ? 'black' : 'grey',
+                            color: x + 1 === page ? 'white' : 'black',
+                        }}
                     >
-                        <Link
-                            to={!isAdmin ?
-                                `/?keyword=${keyword}&page=${x + 1}`
-                                : `/admin/productlist/?keyword=${keyword}&page=${x + 1}`
-                            }
-                        >
-                            {x + 1}
-                        </Link>
+                        {x + 1}
                     </Pagination.Item>
                 ))}
             </Pagination>

@@ -49,10 +49,10 @@ function OrderScreen({ match, history }) {
     useEffect(() => {
 
 
-        if(!userInfo){
+        if (!userInfo) {
             history.push('/login')
         }
-        
+
         if (!order || successPay || order._id !== Number(orderId) || successDeliver) {
             dispatch({ type: ORDER_PAY_RESET })
             dispatch({ type: ORDER_DELIVER_RESET })
@@ -221,21 +221,34 @@ function OrderScreen({ match, history }) {
                                 </ListGroup.Item>
                             )}
 
+                            {loadingDeliver && <Loader />}
+
+
+                            {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+
+                                <ListGroup.Item>
+                                    <div className='d-grid gap-2'>
+                                        <Button
+                                            type='button'
+
+                                            onClick={deliverHandler}
+                                        >
+                                            Mark As Delivered
+                                        </Button>
+                                    </div>
+
+
+
+
+
+                                </ListGroup.Item>
+
+
+
+
+
+                            )}
                         </ListGroup>
-                        {loadingDeliver && <Loader />}
-
-
-                        {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
-                            <ListGroup.Item>
-                                <Button
-                                    type='button'
-                                    className='btn btn-block'
-                                    onClick={deliverHandler}
-                                >
-                                    Mark As Delivered
-                                </Button>
-                            </ListGroup.Item>
-                        )}
                     </Card>
                 </Col>
             </Row>

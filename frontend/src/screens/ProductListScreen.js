@@ -68,8 +68,8 @@ function ProductListScreen({ history, match }) {
                 <Col>
                     <h1>Products</h1>
                 </Col>
-                <Col className='text-right'>
-                    <Button className='my-3' onClick={createProductHandler}>
+                <Col className='wrapper'>
+                    <Button className='icon mb-4' onClick={createProductHandler}>
                         <i className='fas fa-plus'></i> Create Product
                     </Button>
                 </Col>
@@ -99,7 +99,7 @@ function ProductListScreen({ history, match }) {
                                         <th>CATEGORY</th>
                                         <th>CATEGORY</th>
                                         <th>BRAND</th>
-                                        <th></th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>

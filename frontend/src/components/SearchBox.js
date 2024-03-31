@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
 
+
 function SearchBox() {
     const [keyword, setKeyword] = useState('')
 
@@ -19,15 +20,13 @@ function SearchBox() {
 
 
     return (
-        <Form onSubmit={submitHandler}>
+        <Form onSubmit={submitHandler} className="search-container">
             <Form.Control
                 type='text'
                 name='q'
                 onChange={(e) => setKeyword(e.target.value)}
-                className='mr-sm-2 ml-sm-5'
-            >
-
-            </Form.Control>
+                className='search-input'
+            />
 
             <Button
                 type='submit'
@@ -37,6 +36,7 @@ function SearchBox() {
                 Submit
             </Button>
         </Form>
+
     )
 }
 

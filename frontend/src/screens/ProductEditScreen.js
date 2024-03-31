@@ -93,7 +93,7 @@ function ProductEditScreen({ match, history }) {
 
             const { data } = await axios.post('https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/products/upload/', formData, config)
 
-            setImage(data.image_url)
+            setImage(image)
             setUploading(false)
 
 
@@ -147,7 +147,7 @@ function ProductEditScreen({ match, history }) {
                                 <Form.Label>Image</Form.Label>
                                 <Form.Control
 
-                                    type='image'
+                                    type='text'
                                     placeholder='Enter image'
                                     value={image}
                                     onChange={(e) => setImage(e.target.value)}
