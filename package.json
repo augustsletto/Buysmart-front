@@ -44,5 +44,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "name": "buysmart-frontend",
+  "description": "buysmart frontend",
+  "version": "1.0.0",
+  "engines": {
+    "node": "20.11.1"
+  },
+  "name": "example-app",
+  "description": "a really cool app",
+  "version": "0.0.1",
+  "engines": {
+    "npm": "10.2.4"
   }
 }
