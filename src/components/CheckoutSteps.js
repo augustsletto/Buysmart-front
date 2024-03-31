@@ -1,7 +1,8 @@
-import React from 'react'
-import { Nav } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
-import { NavLink } from 'react-bootstrap'
+// jshint esversion: 9
+import React from 'react';
+import { Nav } from 'react-bootstrap';
+
+import { NavLink } from 'react-bootstrap';
 
 function CheckoutSteps({ step1, step2, step3, step4 }) {
 
@@ -16,6 +17,8 @@ function CheckoutSteps({ step1, step2, step3, step4 }) {
                     <NavLink disabled>Login</NavLink>
                 )}
             </Nav.Item>
+
+
 
             <Nav.Item>
                 {step2 ? (

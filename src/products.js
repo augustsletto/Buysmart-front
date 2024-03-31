@@ -1,3 +1,4 @@
+// jshint esversion: 9
 const products = [
   {
     '_id': '1',

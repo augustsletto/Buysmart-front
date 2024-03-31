@@ -1,46 +1,46 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Button, Table } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
-import Loader from '../components/Loader'
-import Message from '../components/Message'
-import { listUsers, deleteUser } from '../actions/userActions'
-import { LinkContainer } from 'react-router-bootstrap'
+// jshint esversion: 9
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Button, Table } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
+import { listUsers, deleteUser } from '../actions/userActions';
 
 
 function UserListScreen({ history }) {
 
 
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const userList = useSelector(state => state.userList)
-    const { loading, error, users } = userList
+    const userList = useSelector(state => state.userList);
+    const { loading, error, users } = userList;
 
-    const userLogin = useSelector(state => state.userLogin)
-    const { userInfo } = userLogin
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
 
-    const userDelete = useSelector(state => state.userDelete)
-    const { success: successDelete } = userDelete
+    const userDelete = useSelector(state => state.userDelete);
+    const { success: successDelete } = userDelete;
 
     useEffect(() => {
 
         if (userInfo && userInfo.isAdmin) {
-            dispatch(listUsers())
+            dispatch(listUsers());
         } else {
-            history.push('/login')
+            history.push('/login');
         }
 
-    }, [dispatch, history, successDelete, userInfo])
+    }, [dispatch, history, successDelete, userInfo]);
 
     const deleteHandler = (id) => {
 
         if (window.confirm('Are you sure you want to delete this user?')) {
-            dispatch(deleteUser(id))
+            dispatch(deleteUser(id));
         }
 
 
-    }
+    };
 
 
     return (

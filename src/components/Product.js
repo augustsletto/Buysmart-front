@@ -1,7 +1,8 @@
-import React from 'react'
-import { Card } from 'react-bootstrap'
-import Rating from './Rating'
-import { Link } from 'react-router-dom'
+// jshint esversion: 9
+import React from 'react';
+import { Card } from 'react-bootstrap';
+import Rating from './Rating';
+import { Link } from 'react-router-dom';
 
 function Product({ product }) {
     return (

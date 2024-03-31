@@ -1,6 +1,8 @@
+
+// jshint esversion: 9
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+
 
 function Paginate({ pages, page, keyword = '', isAdmin = false }) {
     if (keyword) {

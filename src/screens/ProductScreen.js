@@ -1,58 +1,59 @@
+// jshint esversion: 9
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Button, Card, Form } from 'react-bootstrap';
 import Rating from '../components/Rating';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-import { listProductDetails, createProductReview } from '../actions/productActions'
-import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+import { listProductDetails, createProductReview } from '../actions/productActions';
+import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants';
 
 
 function ProductScreen({ match, history }) {
-    const [qty, setQty] = useState(1)
-    const [rating, setRating] = useState(0)
-    const [comment, setComment] = useState('')
+    const [qty, setQty] = useState(1);
+    const [rating, setRating] = useState(0);
+    const [comment, setComment] = useState('');
 
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const productDetails = useSelector(state => state.productDetails)
-    const { loading, error, product } = productDetails
+    const productDetails = useSelector(state => state.productDetails);
+    const { loading, error, product } = productDetails;
 
-    const userLogin = useSelector(state => state.userLogin)
-    const { userInfo } = userLogin
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
 
-    const productReviewCreate = useSelector(state => state.productReviewCreate)
-    const { loading: loadingProductReview, error: errorProductReview, success: successProductReview } = productReviewCreate
+    const productReviewCreate = useSelector(state => state.productReviewCreate);
+    const { loading: loadingProductReview, error: errorProductReview, success: successProductReview } = productReviewCreate;
 
     useEffect(() => {
 
         if (successProductReview) {
-            setRating(0)
-            setComment('')
-            dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
+            setRating(0);
+            setComment('');
+            dispatch({ type: PRODUCT_CREATE_REVIEW_RESET });
         }
 
 
-        dispatch(listProductDetails(match.params.id))
+        dispatch(listProductDetails(match.params.id));
     }, [dispatch, match, successProductReview]);
 
 
     const addToCartHandler = () => {
-        history.push(`/cart/${match.params.id}?qty=${qty}`)
-    }
+        history.push(`/cart/${match.params.id}?qty=${qty}`);
+    };
 
 
     const submitHandler = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         dispatch(createProductReview(
             match.params.id, {
             rating,
             comment
         }
-        ))
-    }
+        ));
+    };
 
     return (
         <div>

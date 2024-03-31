@@ -1,10 +1,12 @@
+// jshint esversion: 9
+
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom'; // Import NavLink from react-router-dom
+import { NavLink } from 'react-router-dom'; 
 import SearchBox from './SearchBox';
 import { logout } from '../actions/userActions';
-import '../Header.css'; // Import custom CSS for styling
+import '../Header.css'; 
 import { Image } from 'react-bootstrap';
 
 

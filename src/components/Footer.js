@@ -1,5 +1,7 @@
-import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+// jshint esversion: 9
+
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
 function Footer() {
     return (

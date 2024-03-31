@@ -1,5 +1,6 @@
-import React from 'react'
-import { Alert } from 'react-bootstrap'
+// jshint esversion: 9
+import React from 'react';
+import { Alert } from 'react-bootstrap';
 
 function Message({variant, children}) {
   return (

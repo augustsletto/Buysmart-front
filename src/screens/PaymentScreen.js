@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from 'react'
-import { Form, Button, Col } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
-import FormContainer from '../components/FormContainer'
-import CheckoutSteps from '../components/CheckoutSteps'
-import { savePaymentMethod } from '../actions/cartActions'
+// jshint esversion: 9
+import React, { useState } from 'react';
+import { Form, Button, Col } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import FormContainer from '../components/FormContainer';
+import CheckoutSteps from '../components/CheckoutSteps';
+import { savePaymentMethod } from '../actions/cartActions';
 
 function PaymentScreen({ history }) {
 
-    const cart = useSelector(state => state.cart)
-    const { shippingAddress } = cart
+    const cart = useSelector(state => state.cart);
+    const { shippingAddress } = cart;
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const [paymentMethod, setPaymentMethod] = useState('PayPal')
+    const [paymentMethod, setPaymentMethod] = useState('PayPal');
 
     if (!shippingAddress.address) {
-        history.push('/shipping')
+        history.push('/shipping');
     }
 
     const submitHandler = (e) => {
-        e.preventDefault()
-        dispatch(savePaymentMethod(paymentMethod))
-        history.push('/placeorder')
-    }
+        e.preventDefault();
+        dispatch(savePaymentMethod(paymentMethod));
+        history.push('/placeorder');
+    };
 
     return (
         <FormContainer>

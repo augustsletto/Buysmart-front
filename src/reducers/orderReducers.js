@@ -1,3 +1,5 @@
+// jshint esversion: 9
+
 import {
     ORDER_CREATE_REQUEST,
     ORDER_CREATE_SUCCESS,
@@ -30,7 +32,7 @@ import {
 
 
 
-} from '../constants/orderConstants'
+} from '../constants/orderConstants';
 
 
 export const orderCreateReducer = (state = {}, action) => {
@@ -38,7 +40,7 @@ export const orderCreateReducer = (state = {}, action) => {
         case ORDER_CREATE_REQUEST:
             return {
                 loading: true
-            }
+            };
 
 
         case ORDER_CREATE_SUCCESS:
@@ -46,26 +48,26 @@ export const orderCreateReducer = (state = {}, action) => {
                 loading: false,
                 success: true,
                 order: action.payload
-            }
+            };
 
         case ORDER_CREATE_FAIL:
             return {
                 loading: false,
                 error: action.payload
-            }
+            };
 
 
         case ORDER_CREATE_RESET:
-            return {}
+            return {};
 
 
 
 
         default:
-            return state
+            return state;
     }
 
-}
+};
 
 
 
@@ -75,25 +77,25 @@ export const orderDetailsReducer = (state = { loading: true, orderItems: [], shi
             return {
                 ...state,
                 loading: true
-            }
+            };
 
         case ORDER_DETAILS_SUCCESS:
             return {
                 loading: false,
                 order: action.payload
-            }
+            };
 
         case ORDER_DETAILS_FAIL:
             return {
                 loading: false,
                 error: action.payload
-            }
+            };
 
 
         default:
-            return state
+            return state;
     }
-}
+};
 
 
 export const orderPayReducer = (state = {}, action) => {
@@ -101,28 +103,28 @@ export const orderPayReducer = (state = {}, action) => {
         case ORDER_PAY_REQUEST:
             return {
                 loading: true
-            }
+            };
 
         case ORDER_PAY_SUCCESS:
             return {
                 loading: false,
                 success: true
-            }
+            };
 
         case ORDER_PAY_FAIL:
             return {
                 loading: false,
                 error: action.payload
-            }
+            };
 
         case ORDER_PAY_RESET:
-            return {}
+            return {};
 
 
         default:
-            return state
+            return state;
     }
-}
+};
 
 
 
@@ -132,28 +134,28 @@ export const orderDeliverReducer = (state = {}, action) => {
         case ORDER_DELIVER_REQUEST:
             return {
                 loading: true
-            }
+            };
 
         case ORDER_DELIVER_SUCCESS:
             return {
                 loading: false,
                 success: true
-            }
+            };
 
         case ORDER_DELIVER_FAIL:
             return {
                 loading: false,
                 error: action.payload
-            }
+            };
 
         case ORDER_DELIVER_RESET:
-            return {}
+            return {};
 
 
         default:
-            return state
+            return state;
     }
-}
+};
 
 
 
@@ -162,30 +164,30 @@ export const orderListMyReducer = (state = { orders: [] }, action) => {
         case ORDER_LIST_MY_REQUEST:
             return {
                 loading: true
-            }
+            };
 
         case ORDER_LIST_MY_SUCCESS:
             return {
                 loading: false,
                 orders: action.payload
-            }
+            };
 
         case ORDER_LIST_MY_FAIL:
             return {
                 loading: false,
                 error: action.payload
-            }
+            };
 
         case ORDER_LIST_MY_RESET:
             return {
                 orders: []
-            }
+            };
 
 
         default:
-            return state
+            return state;
     }
-}
+};
 
 
 
@@ -197,22 +199,22 @@ export const orderListReducer = (state = { orders: [] }, action) => {
         case ORDER_LIST_REQUEST:
             return {
                 loading: true
-            }
+            };
 
         case ORDER_LIST_SUCCESS:
             return {
                 loading: false,
                 orders: action.payload
-            }
+            };
 
         case ORDER_LIST_FAIL:
             return {
                 loading: false,
                 error: action.payload
-            }
+            };
 
 
         default:
-            return state
+            return state;
     }
-}
+};

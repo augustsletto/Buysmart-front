@@ -1,5 +1,6 @@
-import React from 'react'
-import { Spinner } from 'react-bootstrap'
+// jshint esversion: 9
+import React from 'react';
+import { Spinner } from 'react-bootstrap';
 
 function Loader() {
     return (

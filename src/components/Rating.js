@@ -1,4 +1,5 @@
-import React from 'react'
+// jshint esversion: 9
+import React from 'react';
 
 function Rating({ value, text, color }) {
     return (

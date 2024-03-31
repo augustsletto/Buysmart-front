@@ -1,35 +1,36 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Button, Table } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
-import Loader from '../components/Loader'
-import Message from '../components/Message'
-import { listOrders } from '../actions/orderActions'
-import { LinkContainer } from 'react-router-bootstrap'
+// jshint esversion: 9
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Button, Table } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import Loader from '../components/Loader';
+import Message from '../components/Message';
+import { listOrders } from '../actions/orderActions';
+
 
 
 function OrderListScreen({ history }) {
 
 
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const orderList = useSelector(state => state.orderList)
-    const { loading, error, orders } = orderList
+    const orderList = useSelector(state => state.orderList);
+    const { loading, error, orders } = orderList;
 
-    const userLogin = useSelector(state => state.userLogin)
-    const { userInfo } = userLogin
+    const userLogin = useSelector(state => state.userLogin);
+    const { userInfo } = userLogin;
 
 
     useEffect(() => {
 
         if (userInfo && userInfo.isAdmin) {
-            dispatch(listOrders())
+            dispatch(listOrders());
         } else {
-            history.push('/login')
+            history.push('/login');
         }
 
-    }, [dispatch, history, userInfo])
+    }, [dispatch, history, userInfo]);
 
 
 
