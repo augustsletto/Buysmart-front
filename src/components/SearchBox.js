@@ -30,8 +30,8 @@ function SearchBox() {
 
             <Button
                 type='submit'
-                variant='outline-success'
-                className='p-2'
+                variant='primary'
+                className='m-2'
             >
                 Submit
             </Button>

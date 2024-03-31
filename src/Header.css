@@ -1,19 +1,43 @@
 .wrapper {
-    display: flex;
-    width: 100%;
-  }
-  
-  .icon {
-    margin-left: auto;
-  }
+  display: flex;
+  margin-left: auto;
 
+}
 
-  .search-container {
-    display: flex;
-    align-items: center; /* Vertically center items */
+#adminmenue, #username{
+  color: rgb(250, 250, 250);
+}
+
+.icon {
+  margin-left: auto;
+
+}
+
+.whiteIcon {
+  color: rgb(250, 250, 250);
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  /* Vertically center items */
 }
 
 .search-input {
-    flex: 1; /* Take remaining space */
-    margin-right: 10px; /* Adjust spacing between input and button */
+  flex: 1;
+  /* Take remaining space */
+  margin-right: 10px;
+  /* Adjust spacing between input and button */
+}
+
+.headerLogo {
+  size: 40;
+}
+
+.header1 {
+  background-color: #c9c9c9;
+}
+
+.headerlogo {
+  color: rgb(255, 255, 255);
 }

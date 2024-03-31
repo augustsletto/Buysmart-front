@@ -41,13 +41,13 @@ h3 {
 }
 
 .carousel-caption h4 {
-  color: #fff;
+  color: #000000;
 }
 
 .carousel img {
   display:block;
-  height: 300px;
-  padding: 30px;
+  height: 400px;
+  padding: 50px;
   margin: 40px;
   border-radius: 50%;
   margin-left: auto;

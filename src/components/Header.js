@@ -5,6 +5,9 @@ import { NavLink } from 'react-router-dom'; // Import NavLink from react-router-
 import SearchBox from './SearchBox';
 import { logout } from '../actions/userActions';
 import '../Header.css'; // Import custom CSS for styling
+import { Image } from 'react-bootstrap';
+
+
 
 function Header() {
     const userLogin = useSelector(state => state.userLogin);
@@ -17,25 +20,29 @@ function Header() {
 
     return (
         <header>
-            <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+            <Navbar className='header1' variant="dark" expand="lg" collapseOnSelect>
                 <Container>
-                    <Navbar.Brand as={NavLink} to="/">ProShop</Navbar.Brand>
+                    <Navbar.Brand as={NavLink} to="/">
+                        <Image src='https://res.cloudinary.com/dt4sw7qtl/image/upload/v1711908733/vubiuc2abkkyj3z5me6v.png' style={{ height: '60px', width: 'auto' }}></Image>
+                    </Navbar.Brand>
+
+
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <SearchBox />
                         <Nav className="wrapper custom-navbar">
-                            <Nav.Link className='icon' as={NavLink} to="/cart">
+                            <Nav.Link className='whiteIcon' as={NavLink} to="/cart">
                                 <i className="fas fa-shopping-cart"></i>Cart
                             </Nav.Link>
 
                             {userInfo ? (
-                                <NavDropdown title={userInfo.name} id="username">
+                                <NavDropdown  title={userInfo.name} id="username">
                                     <NavDropdown.Item as={NavLink} to="/profile">Profile</NavDropdown.Item>
                                     <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
                                 </NavDropdown>
                             ) : (
-                                <Nav.Link as={NavLink} to="/login">
+                                <Nav.Link className='whiteIcon' as={NavLink} to="/login">
                                     <i className="fas fa-user"></i>Login
                                 </Nav.Link>
                             )}
@@ -56,3 +63,11 @@ function Header() {
 }
 
 export default Header;
+
+
+
+
+
+
+
+
