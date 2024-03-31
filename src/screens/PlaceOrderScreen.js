@@ -1,37 +1,36 @@
-// jshint esversion: 9
-import React, {  useEffect } from 'react';
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import CheckoutSteps from '../components/CheckoutSteps';
-import Message from '../components/Message';
-import { createOrder } from '../actions/orderActions';
-import { ORDER_CREATE_RESET } from '../constants/orderConstants';
+import React, {  useEffect } from 'react'
+import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import CheckoutSteps from '../components/CheckoutSteps'
+import Message from '../components/Message'
+import { createOrder } from '../actions/orderActions'
+import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 
 function PlaceOrderScreen({ history }) {
-    const orderCreate = useSelector(state => state.orderCreate);
-    const { order, error, success } = orderCreate;
+    const orderCreate = useSelector(state => state.orderCreate)
+    const { order, error, success } = orderCreate
 
-    const dispatch = useDispatch();
-    const cart = useSelector(state => state.cart);
+    const dispatch = useDispatch()
+    const cart = useSelector(state => state.cart)
 
-    cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2);
-    cart.shippingPrice = (cart.itemsPrice > 100 ? 0 : 10).toFixed(2);
-    cart.taxPrice = Number((0.082) * cart.itemsPrice).toFixed(2);
-    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2);
+    cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2)
+    cart.shippingPrice = (cart.itemsPrice > 100 ? 0 : 10).toFixed(2)
+    cart.taxPrice = Number((0.082) * cart.itemsPrice).toFixed(2)
+    cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
 
 
     if (!cart.paymentMethod) {
-        history.push('/payment');
+        history.push('/payment')
     }
 
 
     useEffect(() => {
         if (success) {
-            history.push(`/order/${order._id}`);
-            dispatch({ type: ORDER_CREATE_RESET });
+            history.push(`/order/${order._id}`)
+            dispatch({ type: ORDER_CREATE_RESET })
         }
-    }, [success, history, dispatch, order._id]);
+    }, [success, history,])
 
 
     const placeOrder = () => {
@@ -44,8 +43,8 @@ function PlaceOrderScreen({ history }) {
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice,
     
-        }));
-    };
+        }))
+    }
 
 
     return (
