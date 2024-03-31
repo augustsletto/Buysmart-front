@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { axiosReq } from '../api/axiosDefaults'
 import { Link } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
@@ -91,7 +92,7 @@ function ProductEditScreen({ match, history }) {
                 }
             }
 
-            const { data } = await axios.post('https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/products/upload/', formData, config)
+            const { data } = await axiosReq.post('/api/products/upload/', formData, config)
 
             setImage(image)
             setUploading(false)

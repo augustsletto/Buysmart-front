@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { axiosReq } from '../api/axiosDefaults'
 import {
     CART_ADD_ITEM,
     CART_REMOVE_ITEM,
@@ -9,7 +10,7 @@ import {
 
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-    const { data } = await axios.get(`https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/products/${id}`)
+    const { data } = await axiosReq.get(`/api/products/${id}`)
 
     dispatch({
         type: CART_ADD_ITEM,

@@ -1,5 +1,6 @@
 
 import axios from 'axios'
+import { axiosReq } from '../api/axiosDefaults'
 
 import {
     PRODUCT_LIST_REQUEST,
@@ -40,7 +41,7 @@ export const listProducts = (keyword = '') => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST })
 
-        const { data } = await axios.get(`https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/products/${keyword}`)
+        const { data } = await axiosReq.get(`/api/products/${keyword}`)
 
         dispatch({
             type: PRODUCT_LIST_SUCCESS,
@@ -63,7 +64,7 @@ export const listTopProducts = () => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_TOP_REQUEST })
 
-        const { data } = await axios.get(`https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/products/top/`)
+        const { data } = await axiosReq.get(`/api/products/top/`)
 
         dispatch({
             type: PRODUCT_TOP_SUCCESS,
@@ -85,7 +86,7 @@ export const listProductDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST })
 
-        const { data } = await axios.get(`https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/products/${id}`)
+        const { data } = await axiosReq.get(`/api/products/${id}`)
 
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
@@ -122,8 +123,8 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.delete(
-            `https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/products/delete/${id}/`,
+        const { data } = await axiosReq.delete(
+            `/api/products/delete/${id}/`,
             config
         )
 
@@ -165,8 +166,8 @@ export const createProduct = () => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.post(
-            'https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/products/create/',
+        const { data } = await axiosReq.post(
+            '/api/products/create/',
             {},
             config
         )
@@ -208,8 +209,8 @@ export const updateProduct = (product) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.put(
-            `https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/products/update/${product._id}/`,
+        const { data } = await axiosReq.put(
+            `/api/products/update/${product._id}/`,
             product,
             config
         )
@@ -258,8 +259,8 @@ export const createProductReview = (productId, review) => async (dispatch, getSt
             }
         }
 
-        const { data } = await axios.post(
-            `https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/products/${productId}/reviews/`,
+        const { data } = await axiosReq.post(
+            `/api/products/${productId}/reviews/`,
             review,
             config
         )

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { axiosReq } from '../api/axiosDefaults'
 import {
     ORDER_CREATE_REQUEST,
     ORDER_CREATE_SUCCESS,
@@ -49,8 +50,8 @@ export const createOrder = (order) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.post(
-            'https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/orders/add/',
+        const { data } = await axiosReq.post(
+            '/api/orders/add/',
             order,
             config
         )
@@ -103,8 +104,8 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.get(
-            `https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/orders/${id}/`,
+        const { data } = await axiosReq.get(
+            `/api/orders/${id}/`,
             config
         )
 
@@ -145,8 +146,8 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.put(
-            `https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/orders/${id}/pay/`,
+        const { data } = await axiosReq.put(
+            `/api/orders/${id}/pay/`,
             paymentResult,
             config
         )
@@ -187,8 +188,8 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.put(
-            `https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/orders/${order._id}/deliver/`,
+        const { data } = await axiosReq.put(
+            `/api/orders/${order._id}/deliver/`,
             {},
             config
         )
@@ -230,8 +231,8 @@ export const listMyOrders = () => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.get(
-            'https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/orders/myorders/',
+        const { data } = await axiosReq.get(
+            '/api/orders/myorders/',
             config
         )
 
@@ -272,8 +273,8 @@ export const listOrders = () => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.get(
-            'https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/orders/',
+        const { data } = await axiosReq.get(
+            '/api/orders/',
             config
         )
 

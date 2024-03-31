@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { axiosReq } from '../api/axiosDefaults'
 import {
     USER_LOGIN_REQUEST,
     USER_LOGIN_SUCCESS,
@@ -54,8 +55,8 @@ export const login = (email, password) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post(
-            'https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/users/login/',
+        const { data } = await axiosReq.post(
+            '/api/users/login/',
             { 'username': email, 'password': password },
             config
         )
@@ -105,8 +106,8 @@ export const register = (name, email, password) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post(
-            'https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/users/register/',
+        const { data } = await axiosReq.post(
+            '/api/users/register/',
             { 'name': name, 'email': email, 'password': password },
             config
         )
@@ -156,8 +157,8 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.get(
-            `https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/users/${id}/`,
+        const { data } = await axiosReq.get(
+            `/api/users/${id}/`,
             config
         )
 
@@ -200,8 +201,8 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.put(
-            'https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/users/profile/update/',
+        const { data } = await axiosReq.put(
+            '/api/users/profile/update/',
             user,
             config
         )
@@ -253,8 +254,8 @@ export const listUsers = () => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.get(
-            'https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/users/',
+        const { data } = await axiosReq.get(
+            '/api/users/',
             config
         )
 
@@ -296,8 +297,8 @@ export const deleteUser = (id) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.delete(
-            `https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/users/delete/${id}/`,
+        const { data } = await axiosReq.delete(
+            `/api/users/delete/${id}/`,
             config
         )
 
@@ -335,8 +336,8 @@ export const updateUser = (user) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.put(
-            `https://8000-augustslett-buysmartbac-1q9h9fijrm6.ws-eu110.gitpod.io/api/users/update/${user._id}/`,
+        const { data } = await axiosReq.put(
+            `/api/users/update/${user._id}/`,
             user,
             config
         )

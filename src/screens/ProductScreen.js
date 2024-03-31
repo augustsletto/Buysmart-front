@@ -48,9 +48,9 @@ function ProductScreen({ match, history }) {
         e.preventDefault()
         dispatch(createProductReview(
             match.params.id, {
-                rating,
-                comment
-            }
+            rating,
+            comment
+        }
         ))
     }
 
