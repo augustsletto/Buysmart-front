@@ -1,50 +1,48 @@
-// jshint esversion: 9
-
-import React, { useState, useEffect } from 'react';
-import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { PayPalButton } from 'react-paypal-button-v2';
-import { Link } from 'react-router-dom';
-import Message from '../components/Message';
-import Loader from '../components/Loader';
-import { getOrderDetails, payOrder, deliverOrder } from '../actions/orderActions';
-import { ORDER_PAY_RESET, ORDER_DELIVER_RESET } from '../constants/orderConstants';
+import React, { useState, useEffect } from 'react'
+import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import { PayPalButton } from 'react-paypal-button-v2'
+import { Link } from 'react-router-dom'
+import Message from '../components/Message'
+import Loader from '../components/Loader'
+import { getOrderDetails, payOrder, deliverOrder } from '../actions/orderActions'
+import { ORDER_PAY_RESET, ORDER_DELIVER_RESET } from '../constants/orderConstants'
 
 function OrderScreen({ match, history }) {
-    const orderId = match.params.id;
-    const dispatch = useDispatch();
+    const orderId = match.params.id
+    const dispatch = useDispatch()
 
-    const [SdkReady, setSdkReady] = useState(false);
+    const [SdkReady, setSdkReady] = useState(false)
 
-    const orderDetails = useSelector(state => state.orderDetails);
-    const { order, error, loading } = orderDetails;
+    const orderDetails = useSelector(state => state.orderDetails)
+    const { order, error, loading } = orderDetails
 
-    const orderPay = useSelector(state => state.orderPay);
-    const { loading: loadingPay, success: successPay } = orderPay;
+    const orderPay = useSelector(state => state.orderPay)
+    const { loading: loadingPay, success: successPay } = orderPay
 
-    const orderDeliver = useSelector(state => state.orderDeliver);
-    const { loading: loadingDeliver, success: successDeliver } = orderDeliver;
+    const orderDeliver = useSelector(state => state.orderDeliver)
+    const { loading: loadingDeliver, success: successDeliver } = orderDeliver
 
-    const userLogin = useSelector(state => state.userLogin);
-    const { userInfo } = userLogin;
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
 
     if (!loading && !error) {
-        order.itemsPrice = order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2);
+        order.itemsPrice = order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0).toFixed(2)
     }
 
 
 
 
     const addPayPalScript = () => {
-        const script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'https://www.paypal.com/sdk/js?client-id=ASMyGji3gis2CLUdUIG-mBbFaokYNc-Z6lsevqko1jexblHyk3F2kYeAUG6W2vsLehZtBLFwxk2gnz7R';
-        script.async = true;
+        const script = document.createElement('script')
+        script.type = 'text/javascript'
+        script.src = 'https://www.paypal.com/sdk/js?client-id=ASMyGji3gis2CLUdUIG-mBbFaokYNc-Z6lsevqko1jexblHyk3F2kYeAUG6W2vsLehZtBLFwxk2gnz7R'
+        script.async = true
         script.onload = () => {
-            setSdkReady(true);
-        };
-        document.body.appendChild(script);
-    };
+            setSdkReady(true)
+        }
+        document.body.appendChild(script)
+    }
 
 
 
@@ -52,31 +50,31 @@ function OrderScreen({ match, history }) {
 
 
         if (!userInfo) {
-            history.push('/login');
+            history.push('/login')
         }
 
         if (!order || successPay || order._id !== Number(orderId) || successDeliver) {
-            dispatch({ type: ORDER_PAY_RESET });
-            dispatch({ type: ORDER_DELIVER_RESET });
-            dispatch(getOrderDetails(orderId));
+            dispatch({ type: ORDER_PAY_RESET })
+            dispatch({ type: ORDER_DELIVER_RESET })
+            dispatch(getOrderDetails(orderId))
         } else if (!order.isPaid) {
             if (!window.paypal) {
-                addPayPalScript();
+                addPayPalScript()
             } else {
-                setSdkReady(true);
+                setSdkReady(true)
             }
 
         }
-    }, [dispatch, order, orderId, successPay, successDeliver, history, userInfo]);
+    }, [dispatch, order, orderId, successPay, successDeliver])
 
 
     const successPaymentHandler = (paymentResult) => {
-        dispatch(payOrder(orderId, paymentResult));
-    };
+        dispatch(payOrder(orderId, paymentResult))
+    }
 
     const deliverHandler = () => {
-        dispatch(deliverOrder(order));
-    };
+        dispatch(deliverOrder(order))
+    }
 
     return loading ? (
         <Loader />
