@@ -334,6 +334,11 @@ in user-generated content.
 - A search for "Dior Jordan" yields results featuring the coveted collaboration between Dior and Jordan, allowing users to explore and discover these exclusive products effortlessly.
 ![FrontPage](https://res.cloudinary.com/dt4sw7qtl/image/upload/v1711928662/SneakReadMeImages/e91chanc7ce0z4jalf02.jpg)
 
+- I designed a logo specifically for this project, amalgamating the name "Sneak" with images of sneakers. The logo is meticulously crafted to align leftward, providing a cohesive visual representation of the project's theme and essence.
+![FrontPage](https://res.cloudinary.com/dt4sw7qtl/image/upload/v1711928824/SneakReadMeImages/zmoinmmunqhupvzkkojg.png)
+
+
+
 ## Credits
 
 Sneak was created by [Your Name] as a personal project. Special thanks to the developers of the libraries and tools used in this project, as well as the open-source community for their contributions.
