@@ -2,6 +2,12 @@
 
 Sneak is an e-commerce website built with React, where users can explore and purchase a wide range of sneakers and luxury items such as bags and wallets. It offers a seamless shopping experience with features designed to enhance user engagement and satisfaction.
 
+# [Live Frontend Heroku Project](https://buysmart-frontend-7289ed9987fe.herokuapp.com/)
+
+
+- [Live Backend](https://buysmart-react-a67a60d44e70.herokuapp.com/)
+- [Backend GitHub Repository](https://github.com/augustsletto/Buysmart-back)
+
 ## Table of Contents
 
 - [Introduction](#introduction)
@@ -18,6 +24,9 @@ Sneak is an e-commerce website built with React, where users can explore and pur
 - [Deployment](#deployment)
 - [Credits](#credits)
 - [Media](#media)
+
+
+
 
 ## Introduction
 
